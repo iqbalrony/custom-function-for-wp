@@ -1,5 +1,10 @@
 <?php
 /**
+ * Necessary function, which can be used in making of theme
+ * for client or ThemeForest or helper plugin for page builder.
+ */
+
+/**
  * Get all Post list
  */
 if (!function_exists('prefix_get_all_posts')) {

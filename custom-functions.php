@@ -75,6 +75,15 @@ if (!function_exists('prefix_get_contact_form7')) {
 }
 
 /**
+ * Function for ekoo
+ */
+if (!function_exists('prefix_ekoo')) {
+	function prefix_ekoo($item) {
+		return $item;
+	}
+}
+
+/**
  * Function for Allow HTML Tag
  */
 if (!function_exists('prefix_allowed_html')) {
@@ -241,15 +250,17 @@ if (!function_exists('prefix_blog_paginations')) {
  */
 if (!function_exists('prefix_blog_paginations2')) {
 
-	function prefix_blog_paginations2() {
-
-		global $wp_query;
+	function prefix_blog_paginations2($the_query = '') {
+		if (empty($the_query)) {
+			global $wp_query;
+			$the_query = $wp_query;
+		}
 		$big = 999999999; // need an unlikely integer
 		$html = paginate_links(array(
 			'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
 			'format' => '/page/%#%',
 			'current' => max(1, get_query_var('paged')),
-			'total' => $wp_query->max_num_pages,
+			'total' => $the_query->max_num_pages,
 			'end_size' => 2,
 			'prev_text' => '<i class="ti-angle-left"></i>',
 			'next_text' => '<i class="ti-angle-right"></i>',
@@ -262,10 +273,10 @@ if (!function_exists('prefix_blog_paginations2')) {
 		if (1 === $paged) {
 			$html = $pre_deco . $html;
 		}
-		if ($wp_query->max_num_pages == $paged) {
+		if ($the_query->max_num_pages == $paged) {
 			$html = $html . $post_deco;
 		}
-		if (1 != $wp_query->max_num_pages) {
+		if (1 != $the_query->max_num_pages) {
 			echo '<div class="custom-pagination">' . prefix_ekoo($html) . '</div>';
 		} else {
 			return;

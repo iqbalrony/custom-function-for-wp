@@ -4,6 +4,41 @@
  * for client or ThemeForest or helper plugin for page builder.
  */
 
+
+
+$GLOBALS['prefix_render_attributes'] = array();
+function prefix_add_attribute( $element, $key = null, $value = null ) {
+	global $prefix_render_attributes;
+	if ( empty( $prefix_render_attributes[ $element ][ $key ] ) ) {
+		$prefix_render_attributes[ $element ][ $key ] = [];
+	}
+	settype( $value, 'array' );
+	$prefix_render_attributes[ $element ][ $key ] = $value;
+	//dgm_var_dump($prefix_render_attributes);
+	return $prefix_render_attributes;
+}
+function prefix_get_attribute_string( $element ) {
+	global $prefix_render_attributes;
+	if ( empty( $prefix_render_attributes[ $element ] ) ) {
+		return '';
+	}
+	$attributes = array();
+	$attributes = $prefix_render_attributes[ $element ];
+	$rendered_attributes = [];
+
+	foreach ( $attributes as $attribute_key => $attribute_values ) {
+		if ( is_array( $attribute_values ) ) {
+			$attribute_values = implode( ' ', $attribute_values );
+		}
+
+		$rendered_attributes[] = sprintf( '%1$s="%2$s"', $attribute_key, esc_attr( $attribute_values ) );
+	}
+
+	return implode( ' ', $rendered_attributes );
+}
+
+
+
 /**
  * Get all Post list
  */

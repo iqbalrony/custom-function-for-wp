@@ -9,19 +9,19 @@
  * Those two functions are for set and get attribute for html tag.
  * Example:- for set attribute
  * prefix_set_attribute([
-		'wrapper' => [
-			'class' => 'button-wrapper',
-		],
-		'align' => [
-			'class' => [
-				'button-icon',
-				'align-icon',
-			],
-		],
-		'img' => [
-			'src' => 'https://github.com/iqbalrony/',
-		],
-	]);
+ *		'wrapper' => [
+ *			'class' => 'button-wrapper',
+ *		],
+ *		'align' => [
+ *			'class' => [
+ *				'button-icon',
+ *				'align-icon',
+ *			],
+ *		],
+ *		'img' => [
+ *			'src' => 'https://github.com/iqbalrony/',
+ *		],
+ *	]);
  * ---------------OR------------------
  * prefix_set_attribute('wrapper','class','button-wrapper');
  * prefix_set_attribute('align','class',array('button-icon','align-icon'));

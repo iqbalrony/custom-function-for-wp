@@ -52,7 +52,7 @@ function prefix_set_attribute($element, $key = null, $value = null) {
 	}
 	settype($value, 'array');
 	$prefix_render_attributes[$element][$key] = $value;
-	dgm_var_dump($prefix_render_attributes);
+	
 	return $prefix_render_attributes;
 }
 

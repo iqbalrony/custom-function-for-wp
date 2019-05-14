@@ -19,7 +19,7 @@
  *			],
  *		],
  *		'img' => [
- *			'src' => 'https://github.com/iqbalrony/',
+ *			'src' => "https://github.com/iqbalrony/",
  *		],
  *	]);
  * ---------------OR------------------

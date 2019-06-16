@@ -520,8 +520,8 @@ if (!function_exists('prefix_get_the_archive_title')) {
 		} elseif (is_post_type_archive()) {
 			/* translators: Post type archive title. 1: Post type name */
 			$title = post_type_archive_title('', false);
-			if (is_search()) {
-				$title = esc_html__('Search Results for: ', 'text_domain') . esc_html(get_search_query());
+			if (is_shop()) {
+				$title = woocommerce_page_title();
 			}
 		} elseif (is_tax()) {
 			$tax = get_taxonomy(get_queried_object()->taxonomy);
@@ -572,7 +572,7 @@ if (!function_exists('prefix_breadcrumb')) {
 		echo '<ul class="prefix-breadcrumb-link"><li>';
 
 		if (!(is_home() && is_front_page())) {
-			printf("<a class='active' href='%s'>" . esc_html__('Home', 'text_domain') . "</a><span class='breadcrumb-sperarator'>&#47;</span>", esc_url(home_url()));
+			printf("<a class='active' href='%s'><i class='fa fa-home'></i>" . esc_html__('Home', 'text_domain') . "</a><span class='breadcrumb-sperarator'>&#47;</span>", esc_url(home_url()));
 		}
 		$name = get_bloginfo('name');
 		$desc = get_bloginfo('description');

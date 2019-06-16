@@ -253,7 +253,7 @@ if (!function_exists('prefix_fonts_url')) {
 		$fonts = array();
 		$subsets = 'latin,latin-ext';
 
-		/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
+		/*translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language.*/
 		if ('off' !== _x('on', 'Muli: on or off', 'text_domain')) {
 			$fonts[] = 'Muli:400,600,700';
 		}
@@ -406,6 +406,25 @@ if (!function_exists('prefix_post_on')) {
 		$url = get_day_link($year, $month, $day);
 		$date = '<div class="date">' . $span_tag . '<a href="' . esc_url($url) . '">' . esc_html(get_the_date('d M Y')) . '</a></div>';
 		print_r($date);
+	}
+}
+
+/**
+ * Function for post categories list
+ */
+if (!function_exists('prefix_cat_list')) {
+
+	function prefix_cat_list($style = '', $space = ', ') {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list($space);
+		$span_tag = '';
+		if ( 'style-1' == $style ) {
+			$span_tag = '<span>' . esc_html__('Categories: ', 'text_domain') . '</span>';
+		}
+		if ($categories_list) {
+			/* translators: 1: list of categories. */
+			printf('<div class="cat-links">%1$s %2$s</div>', $span_tag, $categories_list);
+		}
 	}
 }
 
